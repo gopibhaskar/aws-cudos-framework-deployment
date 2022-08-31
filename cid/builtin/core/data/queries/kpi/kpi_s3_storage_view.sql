@@ -117,7 +117,7 @@
 			ELSE 0 END) AS "s3_early_delete_cost"	
 			FROM s3_usage_all_time s3
 			LEFT JOIN most_recent_request ON most_recent_request.resource_id = s3.resource_id
-			WHERE CAST(concat(s3.year, '-', s3.month, '-01') AS date) >= (date_trunc('month', current_date) - INTERVAL '3' MONTH)
+			WHERE CAST(concat(s3.year, '-', s3.month, '-01') AS date) >= (date_trunc('month', current_date) - INTERVAL '6' MONTH)
 			GROUP BY 1, 2, 3, 4, 5, 6,7
 		)
 
