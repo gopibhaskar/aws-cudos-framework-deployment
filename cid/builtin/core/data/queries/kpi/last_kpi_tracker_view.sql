@@ -81,7 +81,7 @@ LEFT JOIN (
    , "sum"(unblended_cost) "unblended_cost"
    FROM
      summary_view
-   WHERE (CAST("concat"("year", '-', "month", '-01') AS date) >= ("date_trunc"('month', current_date) - INTERVAL  '3' MONTH))
+   WHERE (CAST("concat"("year", '-', "month", '-01') AS date) >= ("date_trunc"('month', current_date) - INTERVAL  '6' MONTH))
    GROUP BY 1, 2, 3
 )  spend_all ON (spend_all.linked_account_id = account_id))
 LEFT JOIN (
@@ -184,4 +184,4 @@ LEFT JOIN (
      kpi_s3_storage_all
    GROUP BY 1, 2, 3
 )  s3_all ON ((s3_all.linked_account_id = account_id) AND (s3_all.billing_period = spend_all.billing_period)))
-WHERE (spend_all.billing_period >= ("date_trunc"('month', current_timestamp) - INTERVAL  '3' MONTH))
+WHERE (spend_all.billing_period >= ("date_trunc"('month', current_timestamp) - INTERVAL  '6' MONTH))
