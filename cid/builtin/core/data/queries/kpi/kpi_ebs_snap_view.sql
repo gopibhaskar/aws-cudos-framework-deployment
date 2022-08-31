@@ -51,7 +51,7 @@ CREATE OR REPLACE VIEW kpi_ebs_snap AS
 		   FROM
 			 (snapshot_usage_all_time snapshot
 		   LEFT JOIN request_dates ON (request_dates.request_dates_resource_id = snapshot.resource_id))
-		   WHERE (CAST("concat"(snapshot.year, '-', snapshot.month, '-01') AS date) >= ("date_trunc"('month', current_date) - INTERVAL  '3' MONTH))
+		   WHERE (CAST("concat"(snapshot.year, '-', snapshot.month, '-01') AS date) >= ("date_trunc"('month', current_date) - INTERVAL  '6' MONTH))
 		   GROUP BY 1, 2, 3, 4, 5, 6
 		)
 		(
