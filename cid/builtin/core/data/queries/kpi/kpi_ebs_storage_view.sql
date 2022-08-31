@@ -25,7 +25,7 @@ ebs_all AS (
 	WHERE (line_item_product_code = 'AmazonEC2') AND (line_item_line_item_type = 'Usage') 
 	AND bill_payer_account_id <> ''
 	AND line_item_usage_account_id <> ''	   
-	AND (CAST("concat"("year", '-', "month", '-01') AS date) >= ("date_trunc"('month', current_date) - INTERVAL  '3' MONTH))
+	AND (CAST("concat"("year", '-', "month", '-01') AS date) >= ("date_trunc"('month', current_date) - INTERVAL  '6' MONTH))
 	AND product_volume_api_name <> ''
 	AND line_item_usage_type NOT LIKE '%Snap%'
 	AND line_item_usage_type LIKE '%EBS%' 
